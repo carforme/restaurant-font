@@ -1,0 +1,61 @@
+ .orderItemStyle{
+   text-align: center;
+   min-width:725px;
+   max-width:850px;
+  margin: 5px auto;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top:50px;
+  height:250px;
+  box-shadow:0 0 2px 6px rgba(0,0,0,0.3);
+}
+.Fdiv{
+  min-width: 775px;
+padding: 10px 25px 10px 25px;
+ border:5px solid gray;
+ border-radius: 8px;
+ box-shadow: inset;
+ box-shadow: 0 0 0 5px rgba(0,0,0,0.2);
+
+}
+.h{
+  margin: 25px auto;
+  color: cornflowerblue;
+  text-align: center;
+  font-size: 45px;
+}
+.diva{
+  display: inline-block;
+  width: 400px;
+}
+.ht{
+  text-align: center;
+  width:250px;
+  height: 150px;
+  display: inline-block;
+  font-size: 55px;
+  color: blue;
+  line-height: 60px;
+  padding:0;
+ position: relative;
+ top:-45px;
+ left:-30px;
+}
+.hs{
+ font-size: 22px;
+ padding-top: 15px;
+ line-height: 25px;
+}
+.divh{
+  text-align: left;
+}
+.divs{
+  height:40px;
+  margin-left: 0;
+  text-align: left;
+}
+.btn{
+  font-size: 20px;
+  height: 35px;
+  margin-top:10px;
+}

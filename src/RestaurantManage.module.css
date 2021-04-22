@@ -3,15 +3,11 @@
   height:85px;
   line-height: 85px;
   position: relative;
-  left: 180px;
   text-align: center;
- 
- 
 }
 .Headspan{
   position: relative;
-  left: -75px;
- 
+  left: -50px;
   margin:0;
   padding:0;
   min-width: 580px;
@@ -21,57 +17,35 @@
   white-space: nowrap;
 
 }
-.asideName{
-  position: fixed;
-  margin-top:-85px;
-  width:180px;
-  min-height:100%;
 
-  background:rgba(214, 209, 209, 0.5);
-}
-.asideName ul{
-  height:520px;
-  width:178px;
-  list-style: none;
 
-  margin: 0;
-  padding: 0;
-  padding-top:30px;
-  text-align: center;
-  background-color: rgb(200,228,255);
-}
-.asideName ul li{
-  margin: 10px auto;
-  height: 40px;
-}
-.asideName ul li:hover{
-  background-color: whitesmoke;
-}
-.mainName{
-  margin-left: 180px;
-  padding-bottom: 32px;
-}
 .Slider{
-  padding-top:20px;
-  background:rgba(250, 247, 247,0.8);
+  
+  background:rgba(200,228,255,0.3);
 }
 .Menu{
-  width:200px;
-  margin-left: 10px;
-}
-.Item{
-  font-size: 23px;
-  color:black;
-}
-.footme{
-  text-align: center;
-  position:fixed;
-   bottom:0px;
-  width:100%;
-   padding:10px 25px;
-   background:rgba(214, 209, 209, 1);
+  padding-top:20px;
+width:200px;
+padding-left: 10px;
 
 }
+
+.Item{
+  font-size: 20px;
+  height:50px;
+  color:rgb(95, 129, 207);
+  font-weight:normal;;
+}
+.mained{
+  background-image: url(https://5b0988e595225.cdn.sohucs.com/images/20190919/82f9dc5fd0aa47fe8e206e0dd3c340cb.jpeg);
+  background-size: auto 140%;
+  background-position: center;
+  background-repeat: repeat-y;
+  background-attachment: fixed;
+ 
+}
+
+
 /*
 export default withRouter(function(props) {
   async function logout() {
@@ -146,3 +120,46 @@ export default withRouter(function(props) {
 
 })
 */
+/*export default withRouter(function(props) {
+  async function logout() {
+    await api.get('/logout')
+    userInfoFetcher.clearCache()
+    props.history.push('/')
+  }
+  return(
+   <div style={{minHeight:"100%",width:"100%",position:"relative",}}>
+  <div className={style.Headstyle}>
+     <span className={style.Headspan}>Welcome to your restaurant!</span> 
+  </div>
+  <aside className={style.asideName}>
+    <div style={{position:"fixed"}}>
+    <div style={{textAlign:"center",fontSize:"24px",color:"blue",padding:"20px 10px"}}> <span style= {{fontSize:"28px",color:"black",fontWeight:"bold"}}>欢迎来到:</span>
+        <Suspense fallback={<div>loading...</div>}>
+        <RestaurantInfo  />
+       </Suspense>
+        </div>
+      <ul>
+       <li> <Link className={style.Item} to="order">订单管理</Link></li>
+       <li>  <Link className={style.Item} to="food">菜品管理</Link></li>
+       <li> <Link className={style.Item} to="desk">桌面管理</Link></li>
+       <li  className={style.Item} onClick={logout}>&nbsp;退&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;出</li>
+      </ul>
+ 
+
+
+ </div>
+  </aside>
+      <main className={style.mainName} >xxxxxxxxxxxxxx
+      <Switch>
+          <Route path="/restaurant/:rid/manage/order" component={OrderManage}/>
+          <Route path="/restaurant/:rid/manage/food" component={FoodManage}/>
+          <Route path="/restaurant/:rid/manage/desk" component={DeskManage}/>
+          <Route path="/restaurant/:rid/manage/add-food" component={AddFood}/>
+        </Switch>
+      </main> 
+      <Footer className={style.footme} >Ant Design ©2018 Created by Ant UED</Footer>
+  
+  </div>
+  )
+
+})*/

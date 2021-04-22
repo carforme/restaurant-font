@@ -2,7 +2,7 @@ import Button from 'antd/es/button';
 import './App.css';
 import { Layout } from 'antd';
 import React, { useRef, useEffect, useState ,Component } from 'react'
-import { withRouter,Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import api from './api'
 import Axios from 'axios'
 import style from './Homepage.module.css'

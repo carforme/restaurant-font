@@ -2,16 +2,16 @@ import React, { Component, useState, useEffect, useCallback } from 'react'
 import io from 'socket.io-client'
 import api from './api'
 import { produce } from 'immer'
+import style from "./OrderManage.module.css"
+import Button from 'antd/es/button';
+import './App.css';
 
-var orderItemStyle = {
-  border: '2px solid',
-  margin: '5px',
-  padding: '5px',
-}
 
 function OrderItem({order, onDelete}) {
+  
 
   var [orderInfo, setOrder] = useState(order)
+  var [bgcstyle,setBgcstyle]=useState({})
 
   function setConfirm() {
     api.put(`/restaurant/1/order/${order.id}/status`, {
@@ -42,16 +42,23 @@ function OrderItem({order, onDelete}) {
   }
 
   return (
-    <div style={orderItemStyle}>
-      <h2>{orderInfo.deskName}</h2>
-      <h3>总价格：{orderInfo.totlaPrice}</h3>
-      <h3>人数：{orderInfo.customCount}</h3>
-      <h3>订单状态：{orderInfo.status}</h3>
-      <div>
-        <button>打印</button>
-        <button onClick={setConfirm}>确认</button>
-        <button onClick={setComplete}>完成</button>
-        <button onClick={deleteOrder}>删除</button>
+    <div className={style.orderItemStyle} style={bgcstyle}>
+      <h2 className={style.ht}><span style={{color:"black",fontSize:"40px"}}>桌号</span><br/>{orderInfo.deskName}</h2>
+    <div className={style.diva}>
+     <div className={style.divh}>
+        <h3 className={style.hs}>总价格：{orderInfo.totlaPrice}</h3>
+        <h3 className={style.hs}>人数：{orderInfo.customCount}</h3>
+      <h3 className={style.hs}>订单状态：{orderInfo.status}</h3>
+      </div>
+      <div className={style.divs}>
+      
+        <Button type="primary" className={style.btn}>打印</Button>
+        <Button type="primary" className={style.btn} onClick={setConfirm}>确认</Button>
+        <Button type="primary" className={style.btn} onClick={setComplete}>完成</Button>
+        <Button type="primary" className={style.btn} onClick={(event)=>{
+           deleteOrder();setBgcstyle({background:"red"});}
+           }>删除</Button>
+      </div>
       </div>
     </div>
   )
@@ -107,8 +114,8 @@ export default class OrderManage extends Component {
 
   render() {
     return (
-      <div>
-        <h2>订单管理</h2>
+      <div className={style.Fdiv}>
+        <h2 className={style.h}>订单管理</h2>
         <div>
           {this.state.orders.length > 0 ?
             this.state.orders.map(order => {

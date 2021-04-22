@@ -7,20 +7,14 @@ import { produce } from 'immer'
 import history from './history'
 import io from 'socket.io-client'
 import { thisExpression } from '@babel/types'
+import style from "./Foodcart.module.css"
+import Button from 'antd/es/button';
+import './App.css';
+import { Layout, Menu, Breadcrumb } from 'antd';
 
 
-var imgStyle = {
-  float: 'left',
-  width: '100px',
-  height: '100px',
-  border: '2px solid',
-}
+const { Header, Content, Footer } = Layout;
 
-var menuItemStyle = {
-  border: '2px solid',
-  padding: '5px',
-  margin: '5px',
-}
 
 function MenuItem({food, onUpdate, amount}) {
   // var [count, setCount] = useState(amount)
@@ -39,18 +33,20 @@ function MenuItem({food, onUpdate, amount}) {
   }
 
   return (
-    <div style={menuItemStyle}>
-      <h3>{food.name}</h3>
-      <div>
-        <img style={imgStyle} src={'http://localhost:5002/upload/' + food.img} alt={food.name}/>
-        <p>{food.desc}</p>
-        <p>{food.price}</p>
+    <div className={style.menuItemStyle}>
+      <h3 className={style.hthree}>{food.name}</h3>
+      <div className={style.divp}>
+        <img className={style.imgStyle} src={'http://localhost:5002/upload/' + food.img} alt={food.name}/>
+        <p>描述：<span>{food.desc}</span></p>
+        <p>价格：{food.price}</p>
+        <div className={style.divbtn}>
+        
+         数量：<span>{amount}</span>
+         <button onClick={dec}>-</button>
+         <button onClick={inc}>+</button>
       </div>
-      <div>
-        <button onClick={dec}>-</button>
-        <span>{amount}</span>
-        <button onClick={inc}>+</button>
       </div>
+      
     </div>
   )
 }
@@ -77,27 +73,38 @@ function calcTotalPrice(cartAry) {
  * onPlaceOrder事件：用户点击下单时触发
  */
 function CartStatus(props) {
+ // console.log(props)
   var [expand, setExpand] = useState(false)
 
   var totalPrice = calcTotalPrice(props.foods)
 
   return (
     <div style={{
+    
       position: 'fixed',
       height: '50px',
-      bottom: '5px',
-      border: '2px solid',
-      left: '5px',
-      right: '5px',
-      backgroundColor: 'pink',
+      borderRadius:"10px",
+      bottom: '45px',
+      textAlign:"center",
+      left: '260px',
+      right: '260px',
+      minWidth:"500px",
+      backgroundColor: 'rgba(0,0,0,0.15)',
     }}>
       {expand ?
-        <button onClick={() => setExpand(false)}>收起</button> :
-        <button onClick={() => setExpand(true)}>展开</button>
+        <Button type="primary" className={style.divbtntwo} onClick={() => setExpand(false)}>收起</Button> :
+        <Button type="danger"  className={style.divbtntwo} onClick={()=>setExpand(true)}>展开</Button>
       }
-      <strong>总价：{totalPrice}</strong>
+    {
+      expand ?  <div className={style.itemname}>{ props.foods.map(it=>{
+        console.log('props',props,'it',it.food.name,it.amount)
+      return  <div className={style.divitem}>{it.food.name}&nbsp;&nbsp;&nbsp;{it.amount}</div>
+      })}</div>:''
+     }
+      
+      <strong className={style.divbtnthree}>总价：{totalPrice}</strong>
 
-      <button onClick={() => props.onPlaceOrder()}>下单</button>
+      <Button type="danger" className={style.divbtntwo}  onClick={() => props.onPlaceOrder()}>下单</Button>
     </div>
   )
 }
@@ -229,8 +236,28 @@ export default class FoodCart extends Component {
 
   render() {
     return (
+      <Layout style={{height:"100%"}}>
+    <Header style={{ position: 'fixed', zIndex: 1, width: '100%',background:"rgba(0,0,0,0.6)" }}>
+      <div className="logo" />
+      <Menu
+        theme="light"
+        mode="horizontal"
+        defaultSelectedKeys={['2']}
+        style={{ lineHeight: '64px' }}
+      >
+      
+      </Menu>
+      <h1 style={{color:"rgb(27,133,220)",fontWeight:"bold", fontSize:"35px",paddingLeft:"50px"}}>欢迎点餐,祝您用餐愉快！</h1>
+    </Header>
+    <Content style={{ padding: '0 100px', marginTop: 64 }}>
+      <Breadcrumb style={{ margin: '16px 0' }}>
+        <Breadcrumb.Item></Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
+      </Breadcrumb>
+      <div style={{ background: '#fff',height:"100%", padding: 30,paddingTop:20,marginTop:40, minHeight: 380,minWidth:1000 }}>
       <div>
-        <div>
+        <div className={style.divBody}>
           {
             this.state.foodMenu.map(food => {
 
@@ -246,6 +273,11 @@ export default class FoodCart extends Component {
         </div>
         <CartStatus foods={this.state.cart} onUpdate={this.cartChange} onPlaceOrder={this.placeOrder}/>
       </div>
+      </div>
+    </Content>
+    <Footer style={{ textAlign: 'center',position:"fixed",bottom:'0px',width:"100%",padding:"10px 25px"}}>Ant Design ©2018 Created by Ant UED</Footer>
+  </Layout>
+     
     )
   }
 }

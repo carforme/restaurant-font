@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import api from './api'
 import history from './history'
-
+import style from './Addfood.module.css'
+import Button from 'antd/es/button';
+import './App.css';
 
 function AddFood(props) {
   var [foodInfo, setFoodInfo] = useState({
@@ -43,16 +45,19 @@ function AddFood(props) {
   }
 
   return (
-    <div>
-      <h2>添加菜品</h2>
+    <div className={style.divF}>
+      <h2 className={style.h}>添加菜品</h2>
+      <div className={style.divL}>
       <form onSubmit={submit}>
-        名称：<input type="text" onChange={change} defaultValue={foodInfo.name} name="name"/><br/>
-        描述：<input type="text" onChange={change} defaultValue={foodInfo.desc} name="desc"/><br/>
-        价格：<input type="text" onChange={change} defaultValue={foodInfo.price} name="price"/><br/>
-        分类：<input type="text" onChange={change} defaultValue={foodInfo.category} name="category"/><br/>
-        图片：<input type="file" onChange={imgChange} name="img" /><br/>
-        <button>提交</button>
+      <span>  名称：<input type="text" onChange={change} defaultValue={foodInfo.name} name="name"/></span>
+      <span> 描述：<input type="text" onChange={change} defaultValue={foodInfo.desc} name="desc"/>       </span>
+      <span> 价格：<input type="text" onChange={change} defaultValue={foodInfo.price} name="price"/></span>
+      <span> 分类：<input type="text" onChange={change} defaultValue={foodInfo.category} name="category"/></span>
+      <span> 图片：<input type="file" onChange={imgChange} name="img" /></span>
+      <Button type="primary" onClick={submit} className={style.btnss}><p style={{height:"45px",margin:"0", fontSize:"22px",paddingTop:"3px"}}>提交</p></Button>
+
       </form>
+      </div>
     </div>
   )
 }

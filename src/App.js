@@ -32,10 +32,9 @@ function App() {
         <Route path="/landing/r/:rid/d/:did" component={LandingPage} />
         <Route path="/r/:rid/d/:did/c/:count" component={FoodCart} />
         <Route path="/r/:rid/d/:did/order-success" component={OrderSuccess} />
-
         <Route path="/restaurant/:rid/manage/" component={RestaurantManage} />
         <Route path="/login" component={Login} />
-         <Route path="/register" component={Register} />
+        <Route path="/register" component={Register} />
        
          
       </Switch>
@@ -45,3 +44,5 @@ function App() {
 }
 
 export default App
+
+//

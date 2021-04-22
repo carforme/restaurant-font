@@ -1,7 +1,6 @@
 .divstyle{
   width:100%;
   height:100%;
-
 }
 
 .Layoutstyle{
@@ -31,7 +30,7 @@ Header span{
 .Contentdiv{
   text-align: center;
   width: 650px;
-  padding-top:10px;
+  padding-top:100px;
   margin: 55px auto 0 auto;
   background:rgba(250, 247, 247, 0.8);
   height: 410px;
@@ -87,52 +86,14 @@ input{
   font-size: 20px;
   margin:0 auto;
 }
-
-.divhead{
+.order{
+  font-size: 40px;
+  text-align: center;
+  color: rgba(0,102,204);
+  font-weight: bold;
+}
+.orderp{
   font-size: 35px;
-  color:blue;
-  margin-top: 40px;
-  font-weight: bold;
+  text-align: center;
+  color: black;
 }
-.hland{
-  font-size: 30px;
-  margin: 10px auto;
-  height: 50px;
-
-}
-
-.customcount{
-list-style: none;
-width:400px;
-margin: 0 auto;
-font-size: 22px;
-padding:0;
-}
-.customcount li{
-  display: inline-block;
-  width: 150px;
-  line-height: 50px;
-  font-weight: bold;
-  height: 50px;
-  color: rgb(102, 157, 246);
-  font-size: 32px;
-  margin:8px 20px;
-  border-radius: 4px;
-  box-shadow: 0 0 0 4px rgba(0,0,0, 0.1);
-  background-color:rgba(0,0,0,0.08);
-}
-.customcount li:hover{
-  background-color: rgba(0,102,204,0.6);
-  color: aliceblue;
- 
-}
-.btnL{
-  width:200px;
-  height:50px;
-  font-size: 25px;
-  margin-top:23px;
-}
-.customcount li.active{
-  background-color: red;
-}
-

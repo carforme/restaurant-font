@@ -1,0 +1,85 @@
+ .imgStyle {
+  float: left;
+  margin-right: 22px;
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.09) ;
+}
+.divBody{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  flex-wrap: wrap;
+  padding-bottom: 85px;
+}
+.hthree{
+  font-size: 30px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  color: blue;
+}
+.divp{
+ min-height:200px ;
+  margin-left: 25px;
+  padding-top:  0px;
+  font-size: 20px;
+  line-height: 20px;
+}
+.divp p {
+  padding-top: 18px;
+}
+
+.menuItemStyle {
+  border: 3px solid rgba(0,0,0,0.5);
+  padding: 5px;
+  height: 300px;
+  min-width: 350px;
+  width:47%;
+  margin: 5px auto 20px auto;
+  border-radius: 5px;
+  box-shadow:0 0 2px 6px rgba(0,0,0,0.3);
+}
+.divbtn button{
+  width:40px;
+  font-size:25px ;
+  border-radius: 10px;
+  margin-left: 6px;
+  line-height: 26px;
+  background: rgba(0,0,0,0.1);
+}
+.divbtn button:hover{
+  background-color: cyan;
+  color: blueviolet;
+  border-radius: 12px;
+}
+.divbtntwo{
+  margin-top: 5px;
+  line-height: 40px;
+  height: 40px;
+  width: 120px;
+  font-size: 18px;
+}
+.divbtnthree{
+  margin: 0 22px 0 22px;
+  font-size: 18px;
+}
+
+.itemname{
+  position: fixed;
+  bottom: 110px;
+  border: 2px solid rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 2px gray;
+  border-radius: 5px;
+  left: 34%;
+  width:180px;
+  font-size: 22px;
+  line-height: 35px;
+  color: black;
+  padding-top:10px;
+  padding-bottom: 10px;
+  background-color: lightskyblue
+  
+}

@@ -1,22 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import api from './api'
-
-var imgStyle = {
-  float: 'left',
-  border: '1px solid',
-  width: '100px',
-  height: '100px',
-  objectFit: 'cover',
-}
-var foodInfoStyle = {
-  overflow: 'hidden',
-}
-var cardStyle = {
-  border: '2px solid',
-  padding: '5px',
-  margin: '5px',
-}
+import style from "./FoodManage.module.css"
+import Button from 'antd/es/button';
+import './App.css';
 
 
 function FoodItem({food, onDelete}) {
@@ -86,23 +73,25 @@ function FoodItem({food, onDelete}) {
   function getContent() {
     if (isModify) {
       return (
-        <div>
+        <div className={style.isdiv}>
           <form>
-            名称：<input type="text" onChange={change} defaultValue={foodInfo.name} name="name"/><br/>
-            描述：<input type="text" onChange={change} defaultValue={foodInfo.desc} name="desc"/><br/>
-            价格：<input type="text" onChange={change} defaultValue={foodInfo.price} name="price"/><br/>
-            分类：<input type="text" onChange={change} defaultValue={foodInfo.category} name="category"/><br/>
-            图片：<input type="file" onChange={imgChange} name="img" />
+          <span>  名称：<input type="text" onChange={change} defaultValue={foodInfo.name} name="name"/></span>
+            <span> 描述：<input type="text" onChange={change} defaultValue={foodInfo.desc} name="desc"/></span>
+            <span> 价格：<input type="text" onChange={change} defaultValue={foodInfo.price} name="price"/></span>
+             <span>分类：<input type="text" onChange={change} defaultValue={foodInfo.category} name="category"/></span>
+            <span>图片：<input type="file" onChange={imgChange} name="img" /></span> 
           </form>
         </div>
       )
     } else {
       return (
-        <div style={foodInfoStyle}>
-          <img src={'/upload/' + foodInfo.img} alt={foodInfo.name} style={imgStyle} />
+        <div className={style.foodInfoStyle}>
+          <img src={'/upload/' + foodInfo.img} alt={foodInfo.name}  className={style.imgStyle} />
+          <div className={style.divp}>
           <p>描述：{foodInfo.desc}</p>
           <p>价格：{foodInfo.price}</p>
           <p>分类：{foodInfo.category ? foodInfo.category : '[暂未分类]'}</p>
+        </div>
         </div>
       )
     }
@@ -110,21 +99,21 @@ function FoodItem({food, onDelete}) {
 
 
   return (
-    <div style={cardStyle}>
-      <h3>{foodInfo.name}</h3>
+    <div className={style.orderItemStyle}>
+      <h3 className={style.ht}>{foodInfo.name}</h3>
       {getContent()}
-      <div>
-        <button onClick={() => setIsModify(true)}>修改</button>
+      <div className={style.divbtn}>
+        <Button onClick={() => setIsModify(true)}>修改</Button>
 
-        <button onClick={save}>保存</button>
+        <Button onClick={save}>保存</Button>
 
         {foodInfo.status === 'on' &&
-          <button onClick={setOffline}>下架</button>
+          <Button onClick={setOffline}>下架</Button>
         }
         {foodInfo.status === 'off' &&
-          <button onClick={setOnline}>上架</button>
+          <Button onClick={setOnline}>上架</Button>
         }
-        <button onClick={deleteFood}>删除</button>
+        <Button onClick={deleteFood}>删除</Button>
       </div>
     </div>
   )
@@ -147,9 +136,11 @@ function FoodItem({food, onDelete}) {
     setFoods(foods.filter(it => it.id !== id))
   }
    return (
-    <div>
-       <Link to="/restaurant/:rid/manage/add-food">添加菜品</Link>
-    <div>
+    <div className={style.Fdiv}>
+      <div className={style.h}> 
+        <Link to="/restaurant/:rid/manage/add-food">添加菜品</Link>
+     </div>
+        <div>
       {
         foods.map(food => {
           return <FoodItem onDelete={onDelete} key={food.id} food={food}/>
